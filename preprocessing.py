@@ -1,5 +1,5 @@
-# a little CLI tool for augmenting images and bounding boxes in YOLO format
-# recursively walks through a directory of classes, loads images and bounding boxes, and performs random augmentations
+# a little tool for augmenting images and bounding boxes in YOLO format
+# walks through a directory of classes, loads images and bounding boxes, and performs random augmentations
 # augmentations are saved to the same directory with a different name
 # file structure should be as such:
 # |-- Dataset
@@ -11,12 +11,13 @@
 # |    |-- test
 # ...
 
+# NOTE: this tool assumes none of your images begin with "aug_"
+
 import numpy as np
 from imgaug import augmenters as iaa
 from imgaug.augmentables.bbs import BoundingBox, BoundingBoxesOnImage
 from PIL import Image
 import os
-import matplotlib.pyplot as plt
 
 # augmentation pipeline, see imgaug documentation for more info (and to add more if you want)
 seq = iaa.Sequential([
