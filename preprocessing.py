@@ -11,7 +11,7 @@
 # |    |-- test
 # ...
 
-# NOTE: this tool assumes none of your images begin with "aug_"
+# NOTE: this tool assumes none of your images begin with "aug_" and all images are already labeled in YOLO format
 
 import numpy as np
 from imgaug import augmenters as iaa
