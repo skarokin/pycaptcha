@@ -9,7 +9,7 @@ from PIL import Image
 import os
 
 # get batch of images from training dataset of class x
-class_dir = "Dataset/train/Stop sign"
+class_dir = "Dataset/train/Bench"
 
 images = []
 bbs = []
