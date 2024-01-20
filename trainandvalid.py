@@ -22,18 +22,20 @@ def get_image_paths(class_dir):
         if filename.endswith(".jpg"):
             image_paths.append(os.path.join(class_dir, filename))
     random.shuffle(image_paths)
+    # # choose only 1000 images (for now :D)
+    # image_paths = image_paths[:1000]
     split = int(0.7 * len(image_paths))
     train_paths = image_paths[:split]
     valid_paths = image_paths[split:]
     with open("Dataset/train/dataset_train.txt", "a") as f:
         for path in train_paths:
-            print("wrote path of" + path + "to dataset_train.txt")
-            # ../../pycaptcha/Dataset/train/class_dir/filename.jpg
-            f.write("../../pycaptcha/" + path.replace("\\", "/") + "\n")
+            print("wrote path of " + path + " to dataset_train.txt")
+            # ../pycaptcha/Dataset/train/class_dir/filename.jpg
+            f.write("../pycaptcha/" + path.replace("\\", "/") + "\n")
     with open("Dataset/train/dataset_valid.txt", "a") as f:
         for path in valid_paths:
-            print("wrote path of" + path + "to dataset_valid.txt")
-            f.write("../../pycaptcha/" + path.replace("\\", "/") + "\n")
+            print("wrote path of " + path + " to dataset_valid.txt")
+            f.write("../pycaptcha/" + path.replace("\\", "/") + "\n")
     print("done processing" + class_dir)
 
 walk_dataset()
