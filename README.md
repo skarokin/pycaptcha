@@ -10,6 +10,7 @@ My custom CAPTCHA system leveraging YOLOv4 and Google Street View API!
   - Full set of original images + a lot of augmentations (this sucked: 0.58 map, 0.5 avg loss)
   - Subset of original images with no augmentations (a little better: 0.51 map, 0.36 avg loss)
   - Full set of original images + a little augmentation (hmmm: 0.69 map, 0.44 avg loss)
+  - Full set of original images + 30% of images with slight augmentations (0.71 map, 0.45 avg loss)
 
 # things-to-do
 - Fetch images from Google Street View API and run my model on it to get objects.
