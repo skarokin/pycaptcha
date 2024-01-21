@@ -9,16 +9,16 @@ from PIL import Image
 import os
 
 # get batch of images from training dataset of class x
-class_dir = "Dataset/train/Bench"
+class_dir = "Dataset/train/stop sign"
 
 images = []
 bbs = []
 
 for filename in os.listdir(class_dir):
     # get all jpg images
-    if filename.endswith(".jpg") and filename.startswith("aug_"):
+    if filename.endswith(".jpg"): #and filename.startswith("stop sign")
         filepath = os.path.join(class_dir, filename)
-        image = Image.open(os.path.join(class_dir, filename))
+        image = Image.open(os.path.join(class_dir, filename)).convert("RGB")
         image = np.array(
             image,
             dtype=np.uint8

@@ -18,6 +18,7 @@ from imgaug import augmenters as iaa
 from imgaug.augmentables.bbs import BoundingBox, BoundingBoxesOnImage
 from PIL import Image
 import os
+import random
 
 # augmentation pipeline, see imgaug documentation for more info (and to add more if you want)
 seq = iaa.Sequential([
@@ -30,12 +31,6 @@ seq = iaa.Sequential([
     iaa.LinearContrast((0.75, 1.5)),         
     iaa.AdditiveGaussianNoise(loc=0, scale=(0.0, 0.05*255), per_channel=0.5), 
     iaa.Multiply((0.8, 1.2), per_channel=0.2), 
-    iaa.Affine(
-        scale={"x": (0.8, 1.2), "y": (0.8, 1.2)},
-        translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)},
-        rotate=(-25, 25),
-        shear=(-8, 8)
-    ),
 ], random_order=True)                
 
 # replace with your own dataset directory
@@ -85,8 +80,9 @@ def process_images(class_dir, images, bbs):
 
     print(f"Images and bounding boxes loaded for {class_dir}...")
 
-    # perform random augmentations
-    images_aug, bbs_aug = augment(images, bbs)
+    # perform random augmentations for 30% of images
+    augmentation_probability = 0.3
+    images_aug, bbs_aug = augment(images, bbs, augmentation_probability)
 
     print(f"Augmentations complete for {class_dir}...")
 
@@ -97,8 +93,17 @@ def process_images(class_dir, images, bbs):
 
 # perform random augmentations with predefined pipeline, must use pixel coordinates
 # imgaug automatically moves bounding boxes for me :D
-def augment(images, bbs):
-    images_aug, bbs_aug = seq(images=images, bounding_boxes=bbs)
+def augment(images, bbs, augmentation_probability):
+    images_aug = []
+    bbs_aug = []
+
+    # random chance to perform augmentations, using zip to traverse lists in parallel
+    # only append images that have been augmented
+    for image, bb in zip(images, bbs):
+        if random.random() < augmentation_probability:
+            image_aug, bb_aug = seq(image=image, bounding_boxes=bb)
+        images_aug.append(image_aug)
+        bbs_aug.append(bb_aug)
 
     # remove out of bounds and clipped bounding boxes
     for i in range(len(bbs_aug)):
