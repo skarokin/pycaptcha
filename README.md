@@ -11,9 +11,10 @@ My custom CAPTCHA system leveraging YOLOv4 and Google Street View API!
   - Subset of original images with no augmentations (a little better: 0.51 map, 0.36 avg loss)
   - Full set of original images + a little augmentation (hmmm: 0.69 map, 0.44 avg loss)
   - Full set of original images + 30% of images with slight augmentations (0.71 map, 0.45 avg loss)
-  - Transfer learning with first 29 layers of YOLOv4-tiny; full set of original images + 30% of images with slight augmentation (i'm getting there! 0.79 map, 0.24 avg loss)
+  - Transfer learning w/ fiurst 29 layers; full set of original images + 30% of images with slight augmentation (i'm getting there! 0.79 map, 0.24 avg loss)
     - This ended up being an anomaly because my stop sign class was not trained on at all... what!?
     - I reran with the same setup and got 0.79 map, 0.24 avg loss again but thankfully it detected stop sign lol
+  - Transfer learning w/ first 29 layers, doubled the batches, full set of original images + 30% of images with slight augmentations (0.79 map, 0.17 avg loss) 
 
 # things-to-do
 - Fetch images from Google Street View API and run my model on it to get objects.
