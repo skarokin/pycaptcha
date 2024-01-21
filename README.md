@@ -6,7 +6,7 @@ My custom CAPTCHA system leveraging YOLOv4 and Google Street View API!
 - Made a script (`preprocessing.py`) with **NumPy** and **imgaug** to produce random augmentations of ANY given dataset in YOLO format.
 - Built a tool for visualizing bounding boxes (`seeboundingboxes.py`) with **Matplotlib**
 - Installed Darknet, CUDA, and cuDNN to train YOLOv4-tiny locally (this took so long lol)
-- Training YOLOv4-tiny
+- Training YOLOv4-tiny (goal: <0.05 avg loss)
   - Full set of original images + a lot of augmentations (this sucked: 0.58 map, 0.5 avg loss)
   - Subset of original images with no augmentations (a little better: 0.51 map, 0.36 avg loss)
   - Full set of original images + a little augmentation (hmmm: 0.69 map, 0.44 avg loss)
