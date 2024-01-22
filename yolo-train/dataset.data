@@ -1,5 +1,0 @@
-classes = 6
-train = ../../pycaptcha/Dataset/train/dataset_train.txt
-valid = ../../pycaptcha/Dataset/train/dataset_valid.txt
-names = ../../pycaptcha/Dataset/train/dataset.names
-backup = ../../pycaptcha/weights

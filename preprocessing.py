@@ -80,8 +80,8 @@ def process_images(class_dir, images, bbs):
 
     print(f"Images and bounding boxes loaded for {class_dir}...")
 
-    # perform random augmentations for 30% of images
-    augmentation_probability = 0.3
+    # perform random augmentations for 60% of images
+    augmentation_probability = 0.6
     images_aug, bbs_aug = augment(images, bbs, augmentation_probability)
 
     print(f"Augmentations complete for {class_dir}...")
@@ -102,8 +102,8 @@ def augment(images, bbs, augmentation_probability):
     for image, bb in zip(images, bbs):
         if random.random() < augmentation_probability:
             image_aug, bb_aug = seq(image=image, bounding_boxes=bb)
-        images_aug.append(image_aug)
-        bbs_aug.append(bb_aug)
+            images_aug.append(image_aug)
+            bbs_aug.append(bb_aug)
 
     # remove out of bounds and clipped bounding boxes
     for i in range(len(bbs_aug)):
