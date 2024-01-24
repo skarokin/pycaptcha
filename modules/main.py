@@ -6,7 +6,7 @@ import pandas as pd
 with open("Dataset/train/datasetpretrained.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 
-image_path = "testimages/palpkbench.png"
+image_path = "testimages/overpeckbike.png"
 
 # get_inferences returns a tensor and applies non-max suppression
 tensor = infer_image(image_path, classes)

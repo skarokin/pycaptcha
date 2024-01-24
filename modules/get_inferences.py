@@ -3,8 +3,8 @@ import numpy as np
 import torch
 from torchvision.ops import nms
 
-weights_file = "weights/yolov4.weights"
-cfg_file = "cfg/yolov4.cfg"
+weights_file = "weights/yolov4-tiny.weights"
+cfg_file = "cfg/yolov4-tiny.cfg"
 
 # load yolo
 net = cv2.dnn.readNet(weights_file, cfg_file)
