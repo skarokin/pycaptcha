@@ -15,7 +15,11 @@ My custom CAPTCHA system leveraging YOLOv4 and Google Street View API!
     - Full set of original images + 30% of images with slight augmentation (i'm getting there! 0.79 map, 0.24 avg loss)
     - Doubled batches, full set of original images + 30% of images with slight augmentations (0.79 map, 0.17 avg loss)
     - Doubled batches, full set of original images + 60% of images with slight augmentations (0.75 map, 0.17 avg loss)
-      - Fine-tuned from best weights of above... (0.85 map, 0.25 avg loss)  
+      - Fine-tuned from best weights of above... (0.85 map, 0.25 avg loss)
+
+End result of training:
+- Outperformed YOLOv4-tiny using my custom dataset (COCO-trained model has the same classes; my model has better mAP on these classes compared to COCO-trained)
+- But in the end I decided to just use COCO-trained YOLOv4 since it's better than tiny anyway lol 
 
 # things-to-do
 - Fetch images from Google Street View API and run my model on it to get objects.
