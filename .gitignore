@@ -7,4 +7,6 @@ __pycache__/
 dist/
 build/
 
-Dataset/
+Dataset/train
+
+weights/yolov4.weights
