@@ -2,7 +2,9 @@ import cv2
 import numpy as np
 import torch
 
-def draw_boxes(img, classes, tensor):
+def draw_boxes(image_path, classes, tensor):
+    # when street view api works, no longer needs this line :D
+    img = cv2.imread(image_path)
 
     # get detections as a tensor
     detections = tensor

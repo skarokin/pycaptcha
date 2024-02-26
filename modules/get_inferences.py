@@ -15,9 +15,10 @@ layer_names = net.getLayerNames()
 output_layers = net.getUnconnectedOutLayersNames()
 
 # use cv2 to make inferences on image
-def infer_image(image, classes):
-    # convert PIL image to OpenCV format
-    img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+def infer_image(image_path, classes):
+    # convert PIL image to OpenCV format (use for when street view api works lol)
+    # img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    img = cv2.imread(image_path)
 
     # no need to get channels so use _
     height, width, _ = img.shape
