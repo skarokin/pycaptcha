@@ -2,8 +2,7 @@ import cv2
 import numpy as np
 import torch
 
-def draw_boxes(image_path, classes, tensor):
-    img = cv2.imread(image_path)
+def draw_boxes(img, classes, tensor):
 
     # get detections as a tensor
     detections = tensor

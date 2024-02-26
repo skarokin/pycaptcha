@@ -6,8 +6,8 @@ from torchvision.ops import nms
 # weights_file = "weights/yolov4-tiny.weights"
 # cfg_file = "cfg/yolov4-tiny.cfg"
 
-weights_file = "../yolov4.weights"
-cfg_file = "../yolov4.cfg"
+weights_file = "weights/yolov4-tiny.weights"
+cfg_file = "cfg/yolov4-tiny.cfg"
 
 # load yolo
 net = cv2.dnn.readNet(weights_file, cfg_file)
@@ -15,9 +15,9 @@ layer_names = net.getLayerNames()
 output_layers = net.getUnconnectedOutLayersNames()
 
 # use cv2 to make inferences on image
-def infer_image(image_path, classes):
-    # read image
-    img = cv2.imread(image_path)
+def infer_image(image, classes):
+    # convert PIL image to OpenCV format
+    img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
     # no need to get channels so use _
     height, width, _ = img.shape
