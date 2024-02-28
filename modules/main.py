@@ -41,7 +41,7 @@ for col in df.columns:
 print(df)
 
 # when initializing captcha test, go through dataframe and identify class with highest avg confidence
-# can do this by grouping by class_id, take the mean confidence, and choose the class with the highest mean confidence
+# group by class_id, take the mean confidence of each class_id, and choose class with the highest mean confidence
 if not df.empty:
     avg_confidence = df.groupby('class_id')['confidence'].mean()
     class_to_test = avg_confidence.idxmax()
